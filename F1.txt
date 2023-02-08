@@ -1,1 +1,4 @@
-Only Test File 1
+
+- name: Get last 20 commits
+
+  run: git log -n 20 --pretty=format:"%h %ad %s" --date=short > commits.txt
