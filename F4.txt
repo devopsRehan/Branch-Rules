@@ -1,3 +1,28 @@
-It is important to note that changing a secret will affect all workflows or actions that use that secret. If there are any workflows or actions that depend on the old value of the secret, the user will need to update them accordingly. Additionally, changing a secret will not affect any workflows or actions that are currently running or queued, so the user may need to cancel and re-run them if they depend on the updated secret.
+This GitHub Actions workflow automates the deployment process of Salesforce code to the QA-Main environment. Let's go through the workflow step by step:
 
-Finally, if a user no longer needs a secret, they can delete it by clicking on the "Delete" button next to it in the "Secrets" page. It is important to be careful when deleting secrets, as this will also affect any workflows or actions that depend on the secre
+Environment variables - The workflow starts by defining three environment variables:
+validation_process - A boolean variable that determines whether code validation should be performed before deployment.
+deploy_process - A boolean variable that determines whether deployment should be performed.
+approval_process - A boolean variable that determines whether manual approval should be required before deployment.
+Trigger events - The workflow is triggered by two events:
+pull_request_review - This event is triggered when a pull request review is submitted on the QA-Main branch.
+workflow_dispatch - This event allows the workflow to be manually triggered through the GitHub Actions UI.
+Build job - The workflow defines a single job named "build". This job runs on an Ubuntu operating system and consists of several steps:
+
+Required check for manual run workflow - This step checks if the workflow was manually triggered and verifies if the branch selected for manual trigger is QA-Main branch. If the branch selected is not QA-Main branch then the workflow gets cancelled.
+
+Checkout Repository Code - This step checks out the code from the repository.
+
+Setup Node.js environment - This step sets up a Node.js environment for running the Salesforce CLI. It specifies the version of Node.js to use (16) and checks for the latest version.
+
+Install Salesforce CLI - This step installs the Salesforce CLI using npm and verifies the installation.
+
+Populate auth file with SFDX_URL secret - This step creates a file named SFDX_QA in the root directory of the repository and populates it with the value of the SFDX_QA_URL secret. The SFDX_QA_URL secret is expected to be a URL for the Salesforce org that corresponds to the QA-Main environment.
+
+Authenticate against dev hub - This step uses the Salesforce CLI to authenticate against the Dev Hub using the force:auth:sfdxurl:store command. The -f option specifies the auth file to use (SFDX_QA).
+
+Code Validation - This step validates the Salesforce code if the validation_process environment variable is set to true. It uses the Salesforce CLI to perform the validation using the force:source:deploy command with the --checkonly option. The --manifest option specifies the location of the package.xml manifest file.
+
+Wait for approval - This step waits for manual approval if the approval_process environment variable is set to true. It uses the trstringer/manual-approval action to require a minimum number of approvals from the specified approvers before the deployment step can run. The approvers are specified as GitHub usernames in the approvers input variable. The minimum-approvals input variable specifies the minimum number of approvals required, and the exclude-workflow-initiator-as-approver input variable determines whether the user who initiated the workflow should be excluded from the approver count.
+
+Deploy - This step deploys the Salesforce code to the QA-Main environment if the deploy_process environment variable is set to true. It uses the Salesforce CLI to perform the deployment using the `force:source:deploy
