@@ -1,5 +1,3 @@
-Go to your repository on GitHub and click on the "Settings" tab.
-Click on "Secrets" in the left sidebar.
-Find the secret you want to update and click on the "Edit" button next to it.
-Update the value of the secret as needed.
-Click on "Update secret" to save the changes.
+It is important to note that changing a secret will affect all workflows or actions that use that secret. If there are any workflows or actions that depend on the old value of the secret, the user will need to update them accordingly. Additionally, changing a secret will not affect any workflows or actions that are currently running or queued, so the user may need to cancel and re-run them if they depend on the updated secret.
+
+Finally, if a user no longer needs a secret, they can delete it by clicking on the "Delete" button next to it in the "Secrets" page. It is important to be careful when deleting secrets, as this will also affect any workflows or actions that depend on the secre
