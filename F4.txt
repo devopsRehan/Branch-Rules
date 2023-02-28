@@ -1,2 +1,3 @@
-New Test File 4
-Manual Update
+GitHub is a web-based platform that provides tools for version control and collaboration on software development projects. It allows multiple developers to work on the same codebase and manage changes to the code over time.
+
+GitHub Actions is a feature of GitHub that allows you to automate tasks and workflows for your software development projects. With GitHub Actions, you can define custom workflows that run automatically in response to events like code commits, pull requests, and issue updates. These workflows can include steps that build, test, deploy, and perform other tasks on your code.
