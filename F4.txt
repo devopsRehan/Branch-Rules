@@ -1,1 +1,1 @@
-that are necessary for their workflows or actions to access. These secrets can then be employed in workflows or actions without being revealed in the code.
+To update an existing GitHub secret, the user should follow these steps:
