@@ -1,1 +1,6 @@
-Once a secret has been added to a repository or organization, it can be used in workflows or actions by referencing it with the syntax ${{ secrets.SECRET_NAME }}. For instance, if there is a secret named MY_SECRET, it can be utilized in a workflow like this:
+jobs:
+  my-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Use my secret
+        run: echo ${{ secrets.MY_SECRET }}
