@@ -1,1 +1,5 @@
-To update an existing GitHub secret, the user should follow these steps:
+Go to your repository on GitHub and click on the "Settings" tab.
+Click on "Secrets" in the left sidebar.
+Find the secret you want to update and click on the "Edit" button next to it.
+Update the value of the secret as needed.
+Click on "Update secret" to save the changes.
