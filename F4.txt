@@ -1,3 +1,11 @@
-GitHub is a web-based platform that provides tools for version control and collaboration on software development projects. It allows multiple developers to work on the same codebase and manage changes to the code over time.
+GitHub secrets are encrypted environment variables that you can use to store sensitive information, such as access tokens, API keys, and passwords, that your workflows or actions need to access. You can then use these secrets in your workflows or actions without revealing them in your code.
 
-GitHub Actions is a feature of GitHub that allows you to automate tasks and workflows for your software development projects. With GitHub Actions, you can define custom workflows that run automatically in response to events like code commits, pull requests, and issue updates. These workflows can include steps that build, test, deploy, and perform other tasks on your code.
+Here are the steps to use GitHub secrets:
+
+Go to your repository on GitHub and click on the "Settings" tab.
+Click on "Secrets" in the left sidebar.
+Click on "New repository secret" to create a new secret.
+Enter a name for the secret and the value of the secret.
+Click on "Add secret" to save the secret.
+
+Once you have added a secret, you can use it in your workflows or actions by referencing it with the syntax ${{ secrets.SECRET_NAME }}. For example, if you have a secret named MY_SECRET, you can use it in your workflow like this:
