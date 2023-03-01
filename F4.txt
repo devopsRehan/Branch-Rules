@@ -1,9 +1,5 @@
-The "Required check for manual run workflow" step in the workflow is designed to ensure that the workflow is only triggered manually by authorized users.
+To set up separate workflows in GitHub for different environments, start by creating separate branches for each environment, such as "QA", "UAT", and "production". Then, create a separate workflow file for each environment in the repository's ".github/workflows" directory, specifying the branch to trigger the workflow in each file.
 
-This step uses an "if" condition to check whether the workflow was triggered manually using the "workflow_dispatch" event. If the workflow was triggered by any other event, this step will not execute.
+In each workflow file, define the steps of the workflow, including building and testing the code, deploying it to the environment, and running any necessary scripts. Make sure to configure the environment-specific variables and secrets that the workflow needs to run, such as API keys, credentials, and configuration files.
 
-Next, the step uses a conditional statement to check whether the user who triggered the workflow is authorized to deploy code to the QA environment. The authorized users are specified in the conditional statement using their GitHub usernames.
-
-If the user is authorized, the step will print a message indicating that the user is valid. However, if the user is not authorized, the step will print a warning message indicating that the user is invalid, and it will cancel the workflow using the "styfle/cancel-workflow-action" action.
-
-Overall, this step helps to ensure that only authorized users can trigger the deployment of code to the QA environment, which helps to maintain the security and integrity of the environment.
+Using separate workflows for separate environments helps ensure that the code is thoroughly tested and validated before deployment. Additionally, it helps maintain a clear separation of concerns between different environments, making it easier to troubleshoot issues and roll back changes if necessary.
