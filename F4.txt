@@ -1,3 +1,1 @@
-GitHub is a web-based platform that provides tools for version control and collaborative software development. It allows developers to host and share code, collaborate on projects, and track changes to code over time.
-
-GitHub makes it easy for developers to work together on projects by providing features like pull requests, issues, and wikis. With pull requests, developers can propose changes to a codebase and request that they be merged in. Issues allow developers to track bugs, feature requests, and other tasks related to a project. Wikis can be used to document a project's code and processes.
+This workflow is the same as the previous workflow, but there are some changes in the "trigger event" and "required check for the manual run workflow" steps.
