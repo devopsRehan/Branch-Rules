@@ -1,1 +1,9 @@
-This workflow is the same as the previous workflow, but there are some changes in the "trigger event" and "required check for the manual run workflow" steps.
+The "Required check for manual run workflow" step in the workflow is designed to ensure that the workflow is only triggered manually by authorized users.
+
+This step uses an "if" condition to check whether the workflow was triggered manually using the "workflow_dispatch" event. If the workflow was triggered by any other event, this step will not execute.
+
+Next, the step uses a conditional statement to check whether the user who triggered the workflow is authorized to deploy code to the QA environment. The authorized users are specified in the conditional statement using their GitHub usernames.
+
+If the user is authorized, the step will print a message indicating that the user is valid. However, if the user is not authorized, the step will print a warning message indicating that the user is invalid, and it will cancel the workflow using the "styfle/cancel-workflow-action" action.
+
+Overall, this step helps to ensure that only authorized users can trigger the deployment of code to the QA environment, which helps to maintain the security and integrity of the environment.
