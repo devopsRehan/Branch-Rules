@@ -1,3 +1,3 @@
-The "original branch" refers to the branch where the workflow file(s) currently exist. This could be the branch where the workflow was originally created, or any other branch where the workflow file(s) have been added or modified.
+If there is no .github/workflows directory in the branch, one cannot copy the workflow files directly. In this case, it is necessary to create a new .github/workflows directory in the branch and add the workflow files to that directory.
 
-For example, if there is a workflow file in the main branch and one wants to use it in the feature-branch branch, then the main branch is the "original branch" and the feature-branch branch is the "new branch". One would copy the workflow file from the main branch to the feature-branch branch to use it in the latter.
+In the file name field, enter the path to the .github/workflows directory followed by the name of the workflow file. For example, if you want to create a new workflow file named build.yml, enter .github/workflows/build.yml.
