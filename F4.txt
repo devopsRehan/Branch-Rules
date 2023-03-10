@@ -1,9 +1,1 @@
-Create a new workflow file in the .github/workflows/ directory of the QA branch.
-
-Copy the contents of the workflow file from the master branch and paste them into the new workflow file in the QA branch.
-
-Make any necessary changes to the workflow file to suit the needs of the QA branch. For example, you may want to change the trigger to only run the workflow on the QA branch, and update any environment variables or other configuration settings.
-
-Commit the changes to the QA branch and push them to the remote repository.
-
-The workflow will now be available in the QA branch and can be triggered as needed. Note that any changes made to the workflow file in the master branch will not automatically be reflected in the QA branch, so you will need to manually update the QA branch if changes are made to the master workflow.
+The .github/workflows/ directory is a special directory in a GitHub repository that contains workflow files written in YAML syntax. These workflow files define the automated workflows that are executed by GitHub Actions when certain events occur, such as a push to the repository, a pull request, or a scheduled event.
