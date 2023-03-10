@@ -1,9 +1,9 @@
-Separate workflows in GitHub enable the implementation of multiple automated processes to deploy code to different environments. For instance, separate workflows can be created for each environment such as development, QA, UAT, and production.
+Create a new workflow file in the .github/workflows/ directory of the QA branch.
 
-Each workflow can have specific rules to trigger it based on certain events, such as code commits, pull requests, or other types of triggers. Furthermore, each workflow can be configured to use distinct environment-specific variables, secrets, and configuration files.
+Copy the contents of the workflow file from the master branch and paste them into the new workflow file in the QA branch.
 
-By utilizing separate workflows for each environment, it is possible to ensure that code is thoroughly tested and validated before deployment to each environment. Additionally, it facilitates the maintenance of a clear separation of concerns between different environments, making it simpler to troubleshoot issues and roll back changes if necessary.
+Make any necessary changes to the workflow file to suit the needs of the QA branch. For example, you may want to change the trigger to only run the workflow on the QA branch, and update any environment variables or other configuration settings.
 
-For instance, if there is a development environment, a workflow could be created that builds and tests the code every time a commit is made to the development branch. Similarly, if there is a QA environment, a separate workflow could be established that builds and tests the code on the QA branch and deploys it to the QA environment once all tests have passed.
+Commit the changes to the QA branch and push them to the remote repository.
 
-Overall, separate workflows provide an effective way to automate the deployment of code to different environments while retaining a high level of control and flexibility over the entire process.
+The workflow will now be available in the QA branch and can be triggered as needed. Note that any changes made to the workflow file in the master branch will not automatically be reflected in the QA branch, so you will need to manually update the QA branch if changes are made to the master workflow.
