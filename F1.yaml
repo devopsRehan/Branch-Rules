@@ -1,6 +1,16 @@
-jobs:
-  my-job:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Use my secret
-        run: echo ${{ secrets.MY_SECRET }}
+- name: Deploy to QA environment
+  if: ${{ env.deploy_process == 'true' }}
+  run: |
+    node_modules/sfdx-cli/bin/run force:source:deploy --manifest ./manifest/package.xml --testlevel RunSpecifiedTests --runtests Test1,Test2
+
+
+- name: Code Validation
+  if: ${{ env.validation_process == 'true' }}
+  run: |
+    node_modules/sfdx-cli/bin/run force:source:deploy --manifest ./manifest/package.xml --checkonly --testlevel RunAllTests
+
+
+- name: Deploy to QA environment
+  if: ${{ env.deploy_process == 'true' }}
+  run: |
+    node_modules/sfdx-cli/bin/run force:source:deploy --manifest ./manifest/package.xml --testlevel RunSpecifiedTests --runtests "${{ secrets.MY_APEX_CLASSES }}"
