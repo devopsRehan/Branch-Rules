@@ -1,9 +1,3 @@
-There are a few possible reasons why you might be seeing more components deployed than what is described in your package.xml file when deploying on Salesforce :
+One key difference is that Salesforce CLI uses the Metadata API to deploy metadata components, while Ant uses the Salesforce Migration Tool. This means that Salesforce CLI requires the user to have the "API Enabled" permission, which is not required for Ant.
 
-Wildcard characters in package.xml: If your package.xml file contains wildcard characters such as "*", it will retrieve all the components that match the specified criteria. For example, if you have specified a wildcard for Apex classes, it will retrieve all the Apex classes in your org, even if you didn't explicitly specify them in the package.xml file.
-
-Dependencies: Salesforce components often have dependencies on other components. For example, if you deploy a Visualforce page that references a custom controller class, both the page and the controller will be deployed, even if you only listed one of them in the package.xml file.
-
-Unmanaged components: If you have unmanaged components in your org, they will be included in the deployment regardless of whether they are listed in the package.xml file or not.
-
-To troubleshoot this issue, you can run a deployment validation check before deploying your changes to your production org. This will help you identify any unexpected components that are being deployed. You can also review the deployment logs to see which components are being deployed, and compare them to the components listed in your package.xml file to identify any discrepancies.
+Another permission required for Salesforce CLI deployment is the "Modify All Data" permission. This permission is needed because Salesforce CLI deploys metadata components using the Metadata API, which requires the ability to modify data in the target org.
