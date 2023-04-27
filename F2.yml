@@ -1,0 +1,16 @@
+- name: Check manual run workflow
+  if: ${{ github.event_name == 'workflow_dispatch' }}
+  run: |
+    USER_LIST="${{ secrets.USER_NAME }}"
+    GITHUB_ACTOR="${{ github.actor }}"
+    if echo "$USER_LIST" | grep -qw "$GITHUB_ACTOR"; then
+      if [[ "${{ github.ref != 'refs/heads/QA-Main' }}" == "true" ]]; then
+        echo "::warning :: Invalid Branch Selected"
+        exit 1  
+      else
+        echo "::notice :: Valid Branch Selected"
+      fi
+    else
+      echo "::warning :: Invalid User"
+      exit 1
+    fi

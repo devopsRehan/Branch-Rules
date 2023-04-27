@@ -1,3 +1,0 @@
-One key difference is that Salesforce CLI uses the Metadata API to deploy metadata components, while Ant uses the Salesforce Migration Tool. This means that Salesforce CLI requires the user to have the "API Enabled" permission, which is not required for Ant.
-
-Another permission required for Salesforce CLI deployment is the "Modify All Data" permission. This permission is needed because Salesforce CLI deploys metadata components using the Metadata API, which requires the ability to modify data in the target org.
