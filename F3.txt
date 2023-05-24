@@ -1,3 +1,7 @@
-The env-vars.txt file is not an actual environment variable file but rather a text file used to store values that act as placeholders for environment variables within a workflow.
+The env-vars.txt file in the GitHub repository serves as a configuration file for managing environment variables within a workflow. It acts as a centralized location to define and store the values of different variables that the workflow needs to reference.
 
-By using the env-vars.txt file, users can define and store the values of different variables that the workflow needs to reference. These values can be dynamically read from the file and used within the workflow steps.
+Rather than hardcoding these values directly into the workflow scripts, they are dynamically read from the env-vars.txt file. This approach provides flexibility and simplifies the management of environment variables, especially when dealing with multiple environments or deployment scenarios.
+
+By keeping the environment variable values separate from the workflow scripts, it becomes easier to update and modify them without modifying the actual workflow code. This separation of concerns enhances maintainability and allows for the secure management of sensitive information such as API keys or access tokens, without exposing them in the workflow files themselves.
+
+In summary, the env-vars.txt file in the GitHub repository acts as a centralized configuration file for storing and referencing environment variable values within a workflow, offering greater flexibility, maintainability, and security.
