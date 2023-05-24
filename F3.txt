@@ -1,1 +1,3 @@
-the env-vars.txt file is a text file that contains environment variables used within the workflow. The content of the file appears to be a JSON object representing different properties and their corresponding values.
+The env-vars.txt file is not an actual environment variable file but rather a text file used to store values that act as placeholders for environment variables within a workflow.
+
+By using the env-vars.txt file, users can define and store the values of different variables that the workflow needs to reference. These values can be dynamically read from the file and used within the workflow steps.
