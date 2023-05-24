@@ -1,0 +1,5 @@
+The test-classes.txt file is referenced in the "Run Specified Tests" step of the workflow. It is used to specify a list of test classes or test methods that should be executed as part of the deployment process.
+
+In the workflow step, the contents of the test-classes.txt file are read and stored in the test_classes variable. Then, the Salesforce CLI command node_modules/sfdx-cli/bin/run project:deploy:start is executed with the --test-level RunSpecifiedTests flag and the --tests option set to the value of test_classes. This command triggers the deployment of the package defined in the ./manifest/package.xml file and runs the specified test classes or methods.
+
+The test-classes.txt file should contain a list of test class names or test method names, each on a separate line. For example:
