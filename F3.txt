@@ -1,1 +1,9 @@
-This step performs code validation if the validation_process environment variable is set to true. It uses the project:deploy:start command of the Salesforce CLI with the --manifest flag to specify the package manifest file (./manifest/package.xml). The --dry-run flag is used to simulate the deployment without making actual changes.
+This step runs local tests if the run_local_tests environment variable is set to true. It uses the project:deploy:start command of the Salesforce CLI with the --test-level flag set to RunLocalTests to execute the local tests during the deployment dry run.
+
+This step runs all tests if the run_all_tests environment variable is set to true. It uses the project:deploy:start command of the Salesforce CLI with the --test-level flag set to RunAllTests to execute all tests during the deployment dry run.
+
+This step runs specified tests if the run_specified_tests environment variable is set to true. It reads the test classes from a file named test-classes.txt and assigns them to the test_classes variable. Then, it uses the project:deploy:start command of the Salesforce CLI with the --test-level flag set to RunSpecifiedTests and the --tests flag set to the value of test_classes to execute the specified tests during the deployment dry run.
+
+This step waits for manual approval if the previous steps were successful and the approval_process environment variable is set to true. It uses the trstringer/manual-approval@v1 action to wait for approval. The secret parameter is set to the github.TOKEN to grant permission for approval. The approvers parameter specifies a list of approvers stored in the QA_APPROVERS_LIST secret. The minimum-approvals parameter is set to 1, requiring at least one approval. The issue-title parameter sets the title of the approval issue. The exclude-workflow-initiator-as-approver parameter is set to false, allowing the workflow initiator to approve.
+
+This step performs the actual deployment if the deploy_process environment variable is set to true. It uses the project:deploy:start command of the Salesforce CLI with the --manifest flag to specify the package manifest file (./manifest/package.xml).
