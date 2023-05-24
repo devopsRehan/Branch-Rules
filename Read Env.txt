@@ -1,0 +1,15 @@
+This step is responsible for reading environment variables from a file named env-vars.txt. Here's a breakdown of what each part of the step does:
+
+The step is named "Read environment variables from file" using the name field.
+
+The step is given an identifier env-vars using the id field. This identifier allows us to reference the output of this step later in the workflow.
+
+The script starts with a conditional check. It checks if the file env-vars.txt exists in the current directory using the -f flag with the [ -f <file> ] condition. If the file exists, it proceeds to the next step. If not, it prints a warning message "::warning :: env-vars.txt file does not exist." and exits the step with an error (exit code 1).
+
+If the env-vars.txt file exists, the script reads its content using the cat env-vars.txt command.
+
+The environment variable env is set using the content of env-vars.txt. It uses the echo env=$(cat env-vars.txt) command to create the env environment variable and assigns it the value of the file content.
+
+The output of the echo command, which sets the env environment variable, is appended to the $GITHUB_OUTPUT environment variable. The >> operator is used for appending.
+
+In summary, this step checks for the existence of the env-vars.txt file. If the file exists, it reads its content and sets the env environment variable with that content. The value of the env environment variable is then appended to the $GITHUB_OUTPUT environment variable, which allows other steps in the workflow to access and use these environment variables. If the env-vars.txt file does not exist, the step fails with an error, indicating that the file is missing.
