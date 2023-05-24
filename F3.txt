@@ -1,3 +1,1 @@
-Test File 3 into new branch
-New Test File 3
-
+On Windows, you can create GitHub SSH keys with the open-source tool PuttyGen/GitBash. On Ubuntu, or even on Windows, if you have the Windows Subsystem for Linux (WSL) service installed, GitHub SSH key creation is even easier. Just invoke the ssh-keygen command in Windows PowerShell or the Ubuntu Terminal window.
