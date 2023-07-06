@@ -16,4 +16,21 @@
     git add .
     git commit -m "Add deployment output ${datetime}"
     git push origin <specific_branch>
+
+
+- name: Deploy
+  if: ${{ fromJson(steps.env-vars.outputs.env).deploy_process == 'true' }}
+  run: |
+    datetime=$(echo "${{ steps.datetime.outputs.datetime }}")
+    echo "Deployment Output" > "deploy_output_${datetime}.txt"
+    latest_commit_message=$(git log -1 --pretty=format:"%s")
+    echo "Latest Commit Message: ${latest_commit_message}" >> "deploy_output_${datetime}.txt"
+    git config --global user.name "${{ github.actor }}"
+    git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+    git checkout <specific_branch>
+    git add .
+    git commit -m "Add deployment output ${datetime}"
+    git push origin <specific_branch>
+
+    
     
