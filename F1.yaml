@@ -1,7 +1,7 @@
 - name: Generate date and time
   id: datetime
-  run: |
-    echo "::set-output name=datetime::$(date +%Y%m%d%H%M%S)"
+  run: |   
+    echo "{datetime}={$(date +%Y%m%d%H%M%S)}" >> $GITHUB_OUTPUT
     
 - name: Deploy
   if: ${{ fromJson(steps.env-vars.outputs.env).deploy_process == 'true' }}
@@ -12,7 +12,7 @@
     echo "Latest Commit Message: ${latest_commit_message}" >> "deploy_output_${datetime}.txt"
     git config --global user.name "GitHub Actions"
     git config --global user.email "actions@github.com"
-    git checkout <specific_branch>
+    git checkout CICD_Test
     git add .
     git commit -m "Add deployment output ${datetime}"
     git push origin <specific_branch>
