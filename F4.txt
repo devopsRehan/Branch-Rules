@@ -1,3 +1,0 @@
-If there is no .github/workflows directory in the branch, one cannot copy the workflow files directly. In this case, it is necessary to create a new .github/workflows directory in the branch and add the workflow files to that directory.
-
-In the file name field, enter the path to the .github/workflows directory followed by the name of the workflow file. For example, if you want to create a new workflow file named build.yml, enter .github/workflows/build.yml.
