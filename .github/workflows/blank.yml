@@ -17,8 +17,12 @@ jobs:
           dir 
           
           if (Get-Content .\*.xml)  {
+          Write-Output "    "
+          Write-Output "******************************** XML File ********************************"
+          Write-Output "    "
           type *.xml
           }
           else  {
+          Write-Output "  "
           Write-Output "XML file is blank"
           }
