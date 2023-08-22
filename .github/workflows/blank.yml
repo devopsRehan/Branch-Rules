@@ -1,0 +1,24 @@
+name: XML File
+
+on:
+  workflow_dispatch:  
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3   
+
+    - name: Read XML File
+      run: |         
+          dir 
+          
+          if (Get-Content .\*.xml)  {
+          type *.xml
+          }
+          else  {
+          Write-Output "XML file is blank"
+          }
